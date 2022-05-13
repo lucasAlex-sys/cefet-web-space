@@ -53,4 +53,27 @@ const imagens = [
         'acinzentada'
     }
   ];
+  
+  let index = 0;
+  let proximo = document.querySelector('#proximo');
+  let anterior = document.querySelector('#anterior');
+  
+  anterior.addEventListener('click', function() {
+    index = index > 0 ? index - 1 : imagens.length - 1;
+    getImage(imagens[index]);
+  });
+  
+  proximo.addEventListener('click', function() {
+    index = (index + 1) % imagens.length;
+    getImage(imagens[index]);
+  });
+  
+  function getImage(new_image) {
+    let image = document.querySelector('#slide');
+    image.src = servidorDasImagens + '/' + new_image.arquivo;
+    image.alt = new_image.descricao;
+}
+
+
+
 
